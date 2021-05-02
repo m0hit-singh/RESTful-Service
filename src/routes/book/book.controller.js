@@ -8,7 +8,7 @@ router.get("/book", getAll);
 async function getAll(req, res) {
   await bookService
     .getAll()
-    .then((data) => res.json(data))
+    .then((data) => res.status(200).json(data))
     .catch((error) => res.status(error.statusCode).json(error));
 }
 
@@ -18,7 +18,7 @@ async function getById(req, res) {
   const bookId = req.params.id;
   await bookService
     .getById(bookId)
-    .then((data) => res.json(data))
+    .then((data) => res.status(200).json(data))
     .catch((error) => res.status(401).json(error));
 }
 
@@ -32,7 +32,7 @@ async function create(req, res) {
   }
   await bookService
     .create(req.body)
-    .then((data) => res.json(data))
+    .then((data) => res.status(201).json(data))
     .catch((error) => res.status(401).json(error));
 }
 
@@ -49,7 +49,7 @@ async function update(req, res) {
 
   await bookService
     .update(req.params.id, req.body)
-    .then((data) => res.json(data))
+    .then((data) => res.status(200).json(data))
     .catch((error) => res.status(401).json(error));
 }
 
@@ -59,7 +59,7 @@ async function deleteBookById(req, res) {
   const bookId = req.params.id;
   await bookService
     .deleteBookById(bookId)
-    .then((data) => res.json(data))
+    .then((data) => res.status(200).json(data))
     .catch((error) => res.status(401).json(error));
 }
 
